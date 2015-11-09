@@ -35,6 +35,7 @@ final class fileloader
             'txt' => ContentType::Text_Plain,
         ];
 	//キャッシュ有りにしたら高速化できそう。
+		//すでになってた。
         header('Content-Type: '.$mime_types[$ext]);
         header('Expires: '. date(\DateTime::RFC1123, time() + 3600));
         header('Cache-Control: max-age=3600');
