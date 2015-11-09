@@ -54,10 +54,12 @@ final class add_room
 		$id = db()->lastInsertId();
 
 		//ここ、SQLiteのタイムスタンプ使うべきかも？->要テーブル構造変更
-		$now = date('Y-m-d H:i:s', strtotime('+9 hours'));
+		
+		//$now = date('Y-m-d H:i:s', strtotime('+9 hours'));
 		$user_name = $user->name;
 		$message = str_replace('"', '\\"', "**{$user_name}さん**が部屋を作りました！");
-		$query = "INSERT INTO `posts` VALUES( {$id}, 0, \"{$now}\", \"{$message}\" )";
+		//$query = "INSERT INTO `posts` VALUES( {$id}, 0, \"{$now}\", \"{$message}\" )";
+		$query = "INSERT INTO `posts`( `room_id`, `user_id`, `message`) VALUES( {$id}, 0, \"{$message}\" )";
 		$stmt = db()->prepare($query);
 		$stmt->execute();
 

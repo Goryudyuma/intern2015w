@@ -27,13 +27,14 @@ final class room
 		//messageがあれば受理し入れる。
         if (!empty($_REQUEST['message'])) {
 			//挿入した瞬間に時間を入れるべき
-            $now = date('Y-m-d H:i:s', strtotime('+9 hours'));
+            //$now = date('Y-m-d H:i:s', strtotime('+9 hours'));
 			//replaceこれだけでは、HTMLやjavascriptが入ってしまい、XSSが容易に行えそう
             $message = str_replace('"', '\\"', $_REQUEST['message']);
             $user_id = $_REQUEST['user_id'];
 
 			//プレースホルダ！！
-            $query = "INSERT INTO `posts` VALUES( {$data['id']}, {$user_id}, \"{$now}\", \"{$message}\" )";
+            //$query = "INSERT INTO `posts` VALUES( {$data['id']}, {$user_id}, \"{$now}\", \"{$message}\" )";
+            $query = "INSERT INTO `posts`( `room_id`, `user_id`, `message`) VALUES( {$data['id']}, {$user_id}, \"{$message}\" )";
             $stmt = db()->prepare($query);
             $stmt->execute();
         }

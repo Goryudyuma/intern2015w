@@ -17,6 +17,7 @@
     <ul class="chat">
         {% for t in talk %}
             <li><a href="/@{{ users[t.user_id].slug }}" title="{{ users[t.user_id].name }}">@{{ users[t.user_id].slug }}</a>: {{ markdown(t.message) }} <time datetime="{{ t.posted_at|date('Y-m-d\\TH:i:s+09:00') }}">({{ t.posted_at }})</time></li>
+
         {% endfor %}
     </ul>
 {% endblock %}
