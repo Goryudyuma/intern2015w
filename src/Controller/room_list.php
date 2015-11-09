@@ -8,6 +8,8 @@ use Baguette\Response;
  * @copyright 2015 pixiv Inc.
  * @license   WTFPL
  */
+
+//room_listを返しているだけ
 final class room_list
 {
     public function action(\Baguette\Application $app, \Teto\Routing\Action $action)
