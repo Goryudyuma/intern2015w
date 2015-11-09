@@ -6,6 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 error_reporting(-1);
 
+//indexページ
 try {
 call_user_func(function(){
     mb_internal_encoding("UTF-8");
@@ -13,6 +14,7 @@ call_user_func(function(){
     $dotenv->overload();
     $dotenv->required('DB_DSN')->notEmpty();
 
+	//roomやユーザー名に数字も許容できそう
     $routing_map = [
         'logout'   => ['GET',  '/logout',      'logout'],
         'login'    => ['GET',  '/login',       'login'],
